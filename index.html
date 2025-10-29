@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PortfolioWebsite</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas class="webgl"></canvas>
+
+    <nav>
+      <h2 class="title">Hardhik Mandadi</h2>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+      </ul>
+    </nav>
+
+    <div class="carousel">
+      <section id="introduction" class="slide">
+        <h1>Welcome!</h1>
+        <p>
+          I hope you're having a wonderful day. Feel free to explore my website
+          (and to break it). Use the arrow keys (Left & Right) or the Navigation
+          Bar at the top of the screen
+        </p>
+      </section>
+
+      <section id="about" class="slide">
+        <h1>About Me</h1>
+        <ul>
+          I'm a motorcycle enthusiast who owns 4 motorcycles and wrenches on all
+          of them!
+        </ul>
+        <ul>
+          I have two dogs, a Husky and a Shiba Inu.
+        </ul>
+        <ul>
+          My favorite color is blue.
+        </ul>
+        <ul>
+          I pour the milk before the cereal (debate me about this; I will change
+          your mind)
+        </ul>
+      </section>
+
+      <section id="projects" class="slide">
+        <h1>Projects</h1>
+        <h2>Compiler</h2>
+        <ul>
+          This project is in its infancy
+        </ul>
+        <ul>
+          Building a simple compiler from scratch
+        </ul>
+        <ul>
+          Utilizing LLVM for optimizations
+        </ul>
+
+        <h2>Portfolio Website (this one)</h2>
+        <ul>
+          I created this website using Three.js!
+        </ul>
+        <ul>
+          As of now, it is very rudimentary because I'm doing a complete
+          overhaul
+        </ul>
+        <ul>
+          Let me know if you have any suggestions or criticisms!
+        </ul>
+
+        <h2>FoundationFirst</h2>
+        <ul>
+          Created a website to provide resources for dehomed Americans
+        </ul>
+        <ul>
+          Utilized React and Next.js for frontend work
+        </ul>
+        <ul>
+          Utilized Supabase, JavaScript, and SQL for backend work
+        </ul>
+      </section>
+
+      <section id="contact" class="slide">
+        <h1>Contact Me!</h1>
+        <div class="contact-item">
+          <a href="mailto:hrmandadi17@gmail.com" class="contact-item">
+            <h3>Email</h3>
+            <p>hrmandadi17@gmail.com</p>
+          </a>
+          <a href="https://github.com/hrmandadi17" class="contact-item">
+            <h3>GitHub</h3>
+            <p>github.com/hrmandadi17</p>
+          </a>
+          <a href="https://linkedin.com/in/hardhikmandadi" class="contact-item">
+            <h3>LinkedIn</h3>
+            <p>linkedin.com/in/hardhikmandadi</p>
+          </a>
+          <a href="+1 (570) 730-3564" class="contact-item">
+            <h3>Phone</h3>
+            <p>(570) 730-3564</p>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="main.js"></script>
+    <script>
+      (() => {
+        const carousel = document.querySelector(".carousel");
+        if (!carousel) return;
+        const slides = Array.from(document.querySelectorAll(".slide"));
+
+        const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
+        const curIndex = () =>
+          Math.round(carousel.scrollLeft / carousel.clientWidth);
+        const goTo = (i) =>
+          slides[clamp(i, 0, slides.length - 1)]?.scrollIntoView({
+            behavior: "smooth",
+            inline: "start",
+          });
+
+        window.addEventListener("keydown", (e) => {
+          const el = document.activeElement;
+          if (
+            el &&
+            (el.tagName === "INPUT" ||
+              el.tagName === "TEXTAREA" ||
+              el.isContentEditable)
+          )
+            return;
+
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            goTo(curIndex() + 1);
+          }
+          if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            goTo(curIndex() - 1);
+          }
+          if (e.key === "Home") {
+            e.preventDefault();
+            goTo(0);
+          }
+          if (e.key === "End") {
+            e.preventDefault();
+            goTo(slides.length - 1);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

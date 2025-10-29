@@ -1,0 +1,18 @@
+{
+  "name": "threejs-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website with Three.js",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "three": "^0.157.0"
+  },
+  "devDependencies": {
+    "vite": "^4.4.9"
+  }
+}
